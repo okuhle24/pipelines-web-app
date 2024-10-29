@@ -1,4 +1,4 @@
-name: .NET
+name: .NET pipeline web app
 
 on:
   push:
@@ -26,10 +26,10 @@ jobs:
         run: dotnet restore
       
       - name: Build
-        run: dotnet build ./path/to/your/project.csproj --no-restore --configuration Release
+        run: dotnet build  --no-restore --configuration Release
       
       - name: Test
-        run: dotnet test ./path/to/your/project.csproj --no-build --verbosity normal --configuration Release
+        run: dotnet test --no-build --verbosity normal --configuration Release
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
         run: |
           dotnet publish ./path/to/your/project.csproj -c Release -o ./publish
           rm -rf "./Q3 CICD pipeline"
-          cp -r ./publish/* "./Q3 CICD pipeline"
+          cp -r ./publish/* "./ pipeline-web-app"
       
       - name: Configure Git
         run: |

@@ -22,12 +22,14 @@ jobs:
         with:
           dotnet-version: 8.0.x
           
+      - name: Restore dependencies
+        run: dotnet restore
       
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build ./path/to/your/project.csproj --no-restore --configuration Release
       
       - name: Test
-        run: dotnet test --no-build --verbosity normal --configuration Release
+        run: dotnet test ./path/to/your/project.csproj --no-build --verbosity normal --configuration Release
 
   deploy:
     runs-on: ubuntu-latest
@@ -40,7 +42,7 @@ jobs:
       
       - name: Copy build artifacts
         run: |
-          dotnet publish -c Release -o ./publish
+          dotnet publish ./path/to/your/project.csproj -c Release -o ./publish
           rm -rf "./Q3 CICD pipeline"
           cp -r ./publish/* "./Q3 CICD pipeline"
       

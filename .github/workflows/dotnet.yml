@@ -1,4 +1,4 @@
-name: .NET pipeline web app
+ame: .NET pipeline web app
 
 on:
   push:
